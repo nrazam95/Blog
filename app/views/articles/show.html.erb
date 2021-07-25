@@ -1,0 +1,17 @@
+<%= render partial: @article, locals: { cover_image_options: [500, 500] } %>
+<br>
+<%= link_to 'Email a friend', '#', onclick: "document.querySelector('#notify_friend').style.display = 'block';return false;" %>
+<div id="notify_friend" style="display:none;">
+  <%= render 'notify_friend', article: @article %>
+</div>
+
+<br>
+<h3>Comments</h3>
+
+<div id="comments">
+  <%= render @article.comments %>
+</div>
+
+<br/>
+
+<%= link_to "New Comment", new_article_comment_path(@article), remote: true, id: 'new_comment_link' %>
